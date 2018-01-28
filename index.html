@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>List of books</title>
-<link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" media="screen">
+    <title>List of books</title>
+    <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="node_modules\bootstrap\dist\jsbootstrap.min.js"></script>
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 </head>
 <body>
-<table>
     <h1>List of books</h1>
     <hr>
+<table>    
 <tr id="headOfList">
     <th>#ID</th>
     <th>Name</th>
@@ -51,8 +70,55 @@
     <td><button>View details</button></td>
   </tr>
 </table>
+<hr>
+
+<div class="row">
+  <div class="col-lg-1">#ID</div>
+  <div class="col-lg-3">Name</div>
+  <div class="col-lg-2">Author</div>
+  <div class="col-lg-1">Price</div>
+  <div class="col-lg-2">Details</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1">100001</div>
+  <div class="col-lg-3">Mr. Penumbra's 24-Hour Bookstore</div>
+  <div class="col-lg-2">Robin Sloan</div>
+  <div class="col-lg-1">£38.87</div>
+  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>   
+</div>
 
 
+<div class="row">
+  <div class="col-lg-1">100002</div>
+  <div class="col-lg-3">The Book Thief</div>
+  <div class="col-lg-2">Markus Zusak</div>
+  <div class="col-lg-1">£8.89</div>
+  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>
+</div>   
+<div class="row">
+  <div class="col-lg-1">100003</div>
+  <div class="col-lg-3">Flowers For Algernon</div>
+  <div class="col-lg-2">Daniel Keyesk</div>
+  <div class="col-lg-1">£5.89</div>
+  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1">100004</div>
+  <div class="col-lg-3">THE THIRTEENTH TALE</div>
+  <div class="col-lg-2">Diane Setterfield</div>
+  <div class="col-lg-1">£29.89</div>
+  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div> 
+</div>
+
+<div class="row">
+  <div class="col-lg-1">100005</div>
+  <div class="col-lg-3">The Girl on the Train</div>
+  <div class="col-lg-2">Paula Hawkins</div>
+  <div class="col-lg-1">£19.79</div>
+  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>
+</div>
 
 </body>
 </html>
