@@ -1,0 +1,22 @@
+{
+  "name": "list-of-books",
+  "version": "1.0.0",
+  "description": "task3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darly-r/list-of-books.git"
+  },
+  "author": "darly-r",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darly-r/list-of-books/issues"
+  },
+  "homepage": "https://github.com/darly-r/list-of-books#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0"
+  }
+}
