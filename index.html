@@ -2,11 +2,14 @@
 <html>
 <head>
     <title>List of books</title>
-    <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="node_modules\jquery\dist/jquery.min.js"></script>
+    <script src="node_modules\bootstrap\dist\jsbootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="node_modules\bootstrap\dist\jsbootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-table {
+/*table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -20,105 +23,216 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
-}
+}*/
 </style>
 </head>
 <body>
-    <h1>List of books</h1>
-    <hr>
-<table>    
-<tr id="headOfList">
-    <th>#ID</th>
-    <th>Name</th>
-    <th>Author</th>
-    <th>Price</th>
-    <th>Details</th>
+<h1>List of books</h1>
+<div class="table-responsive">
+<table class="table table-striped">
+    <tr>
+        <td>
+            <div class="row">
+              <div class="col-lg-1">#ID</div>
+              <div class="col-lg-3">Name</div>
+              <div class="col-lg-2">Author</div>
+              <div class="col-lg-1">Price</div>
+              <div class="col-lg-2">Details</div>
+          </div>
+
+      </td>
   </tr>
   <tr>
-    <td class="idClass">100001</td>
-    <td>Mr. Penumbra's 24-Hour Bookstore</td>
-    <td>Robin Sloan</td>
-    <td>£38.87</td>
-    <td><button>View details</button></td>
-  </tr>
-  <tr>
-    <td class="idClass">100002</td>
-    <td>The Book Thief</td>
-    <td> Markus Zusak</td>
-    <td>£8.89</td>
-    <td><button>View details</button></td>
-  </tr>
-    <tr>
-    <td class="idClass">100003</td>
-    <td>Flowers For Algernon</td>
-    <td>Daniel Keyesk</td>
-    <td>£5.89</td>
-    <td><button>View details</button></td>
-  </tr>
-    <tr>
-    <td class="idClass">100004</td>
-    <td>THE THIRTEENTH TALE</td>
-    <td>Diane Setterfield</td>
-    <td>£29.89</td>
-    <td><button>View details</button></td>
-  </tr>
-    <tr>
-    <td class="idClass">100005</td>
-    <td>The Girl on the Train</td>
-    <td>Paula Hawkins</td>
-    <td>£19.79</td>
-    <td><button>View details</button></td>
-  </tr>
+    <td>
+        <div class="row">
+          <div class="col-lg-1">100001</div>
+          <div class="col-lg-3">Mr. Penumbra's 24-Hour Bookstore</div>
+          <div class="col-lg-2">Robin Sloan</div>
+          <div class="col-lg-1">£38.87</div>
+          <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal1">View details</button></div>   
+      </div>
+      <!-- Modal -->
+    <div class="modal fade" id="detailsModal1" role="dialog">
+      <div class="modal-dialog">
+
+<!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">Close</button>
+            <h4 class="modal-title">Mr. Penumbra's 24-Hour Bookstore</h4>
+          </div>
+          <div class="modal-body"> 
+            <table>
+              <tr>
+                <td><img src="images/penumbra.jpg" alt="error load" width="100" height="150"></td>
+                <td><p>Farrar, Straus and Giroux, 2 окт. 2012 г. - Всего страниц: 304</p>
+                  <p>A gleeful and exhilarating tale of global conspiracy, complex code-breaking, high-tech data visualization, young love, rollicking adventure, and the secret to eternal life—mostly set in a hole-in-the-wall San Francisco bookstore</p>
+                </td>
+              </tr>
+            </table>         
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div> <!-- End of modal -->
+  </td>
+</tr>
+<tr><td>
+    <div class="row">
+      <div class="col-lg-1">100002</div>
+      <div class="col-lg-3">The Book Thief</div>
+      <div class="col-lg-2">Markus Zusak</div>
+      <div class="col-lg-1">£8.89</div>
+      <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal2">View details</button></div>
+  </div>   
+<!-- Modal -->
+    <div class="modal fade" id="detailsModal2" role="dialog">
+      <div class="modal-dialog">
+
+<!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">Close</button>
+            <h4 class="modal-title">The Book Thief</h4>
+          </div>
+          <div class="modal-body"> 
+            <table>
+              <tr>
+                <td><img src="images/bookThief.jpg" alt="error load" width="100" height="150"></td>
+                <td><p>Hardcover, 552 pages. Published March 14th 2006 by Alfred a Knopf Inc</p>
+                  <p>It’s just a small story really, about among other things: a girl, some words, an accordionist, some fanatical Germans, a Jewish fist-fighter, and quite a lot of thievery ...Set during World War II in Germany, Markus Zusak’s groundbreaking new novel is the story of Liesel Meminger, a foster girl living outside of Munich</p>
+                </td>
+              </tr>
+            </table>         
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div> <!-- End of modal -->
+</td>
+</tr>
+<tr>
+    <td>
+        <div class="row">
+          <div class="col-lg-1">100003</div>
+          <div class="col-lg-3">Flowers For Algernon</div>
+          <div class="col-lg-2">Daniel Keyesk</div>
+          <div class="col-lg-1">£5.89</div>
+          <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal3">View details</button></div>
+      </div>
+
+      <!-- Modal -->
+    <div class="modal fade" id="detailsModal3" role="dialog">
+      <div class="modal-dialog">
+
+<!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">Close</button>
+            <h4 class="modal-title">Flowers For Algernon</h4>
+          </div>
+          <div class="modal-body"> 
+            <table>
+              <tr>
+                <td><img src="images/flowers.jpg" alt="error load" width="100" height="150"></td>
+                <td><p>Hardcover, 552 pages. Published March 14th 2006 by Alfred a Knopf Inc</p>
+                  <p>It’s just a small story really, about among other things: a girl, some words, an accordionist, some fanatical Germans, a Jewish fist-fighter, and quite a lot of thievery ...Set during World War II in Germany, Markus Zusak’s groundbreaking new novel is the story of Liesel Meminger, a foster girl living outside of Munich</p>
+                </td>
+              </tr>
+            </table>         
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div> <!-- End of modal -->
+  </td>
+</tr>
+<tr>
+    <td>
+        <div class="row">
+          <div class="col-lg-1">100004</div>
+          <div class="col-lg-3">THE THIRTEENTH TALE</div>
+          <div class="col-lg-2">Diane Setterfield</div>
+          <div class="col-lg-1">£29.89</div>
+          <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal4">View details</button></div> 
+      </div>
+
+      <!-- Modal -->
+    <div class="modal fade" id="detailsModal4" role="dialog">
+      <div class="modal-dialog">
+
+<!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">Close</button>
+            <h4 class="modal-title">THE THIRTEENTH TALE</h4>
+          </div>
+          <div class="modal-body"> 
+            <table>
+              <tr>
+                <td><img src="images/penumbra.jpg" alt="error load" width="100" height="150"></td>
+                <td><p>Hardcover, 552 pages. Published March 14th 2006 by Alfred a Knopf Inc</p>
+                  <p>It’s just a small story really, about among other things: a girl, some words, an accordionist, some fanatical Germans, a Jewish fist-fighter, and quite a lot of thievery ...Set during World War II in Germany, Markus Zusak’s groundbreaking new novel is the story of Liesel Meminger, a foster girl living outside of Munich</p>
+                </td>
+              </tr>
+            </table>         
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div> <!-- End of modal -->
+  </td>
+</tr>
+<tr>
+    <td>
+        <div class="row">
+          <div class="col-lg-1">100005</div>
+          <div class="col-lg-3">The Girl on the Train</div>
+          <div class="col-lg-2">Paula Hawkins</div>
+          <div class="col-lg-1">£19.79</div>
+          <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal5">View details</button></div>
+<!-- Modal -->
+    <div class="modal fade" id="detailsModal5" role="dialog">
+      <div class="modal-dialog">
+
+<!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">Close</button>
+            <h4 class="modal-title">The Girl on the Train</h4>
+          </div>
+          <div class="modal-body"> 
+            <table>
+              <tr>
+                <td><img src="images/penumbra.jpg" alt="error load" width="100" height="150"></td>
+                <td><p>Hardcover, 552 pages. Published March 14th 2006 by Alfred a Knopf Inc</p>
+                  <p>It’s just a small story really, about among other things: a girl, some words, an accordionist, some fanatical Germans, a Jewish fist-fighter, and quite a lot of thievery ...Set during World War II in Germany, Markus Zusak’s groundbreaking new novel is the story of Liesel Meminger, a foster girl living outside of Munich</p>
+                </td>
+              </tr>
+            </table>         
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div> <!-- End of modal -->
+    </div>
+  </td>
+</tr>
 </table>
-<hr>
 
-<div class="row">
-  <div class="col-lg-1">#ID</div>
-  <div class="col-lg-3">Name</div>
-  <div class="col-lg-2">Author</div>
-  <div class="col-lg-1">Price</div>
-  <div class="col-lg-2">Details</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-1">100001</div>
-  <div class="col-lg-3">Mr. Penumbra's 24-Hour Bookstore</div>
-  <div class="col-lg-2">Robin Sloan</div>
-  <div class="col-lg-1">£38.87</div>
-  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>   
 </div>
 
 
-<div class="row">
-  <div class="col-lg-1">100002</div>
-  <div class="col-lg-3">The Book Thief</div>
-  <div class="col-lg-2">Markus Zusak</div>
-  <div class="col-lg-1">£8.89</div>
-  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>
-</div>   
-<div class="row">
-  <div class="col-lg-1">100003</div>
-  <div class="col-lg-3">Flowers For Algernon</div>
-  <div class="col-lg-2">Daniel Keyesk</div>
-  <div class="col-lg-1">£5.89</div>
-  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>
-</div>
-
-<div class="row">
-  <div class="col-lg-1">100004</div>
-  <div class="col-lg-3">THE THIRTEENTH TALE</div>
-  <div class="col-lg-2">Diane Setterfield</div>
-  <div class="col-lg-1">£29.89</div>
-  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div> 
-</div>
-
-<div class="row">
-  <div class="col-lg-1">100005</div>
-  <div class="col-lg-3">The Girl on the Train</div>
-  <div class="col-lg-2">Paula Hawkins</div>
-  <div class="col-lg-1">£19.79</div>
-  <div class="col-lg-2"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#detailsModal">View details</button></div>
-</div>
 
 </body>
 </html>

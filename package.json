@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/darly-r/list-of-books#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0"
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
   }
 }
