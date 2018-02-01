@@ -10,47 +10,7 @@
 </head>
 <body>
 <h1>List of books</h1>
-
-
-
-
-        <!-- <div class="row">
-          <div class="col-lg-1">100005</div>
-          <div class="col-lg-3">The Girl on the Train</div>
-          <div class="col-lg-2">Paula Hawkins</div>
-          <div class="col-lg-1">£19.79</div>
-          <div class="col-lg-2"><button type="button" class="btn btn-outline-light text-dark" data-toggle="modal" data-target="#detailsModal05">View details</button></div> -->
-<!-- Modal -->
-    <!-- <div class="modal fade" id="detailsModal05" role="dialog">
-      <div class="modal-dialog"> -->
-
-<!-- Modal content -->
-        <!-- <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">The Girl on the Train</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body"> 
-
-            <div class="container-fluid">
-            <div class="row">
-              <div class="col-3"><img src="images/penumbra.jpg" alt="error load" width="100" height="150">
-              </div>
-              <div class="col-9">
-                  <p>Hardcover, 552 pages. Published March 14th 2006 by Alfred a Knopf Inc</p>
-                  <p>It’s just a small story really, about among other things: a girl, some words, an accordionist, some fanatical Germans, a Jewish fist-fighter, and quite a lot of thievery ...Set during World War II in Germany, Markus Zusak’s groundbreaking new novel is the story of Liesel Meminger, a foster girl living outside of Munich</p>
-                </div>
-              </div>
-            </div>       
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
-            </div>
-          </div>
-        </div> 
-      </div>
-    </div>  --><!-- End of modal -->
-<!--     </div>
- -->
+       
 
 <div class="container-fluid">
   <div class="row bg-dark text-white">
@@ -65,7 +25,39 @@
 
 
 <button onclick="sortByPriceRev()">Sort by price (reverse)</button>
-        
+
+<!-- <div class="col-lg-2"><button type="button" class="btn btn-outline-light text-dark" data-toggle="modal" data-target="#detailsModal05">View details</button></div> -->
+<!-- Modal -->
+    <div class="modal fade" id="detailsModal" role="dialog">
+      <div class="modal-dialog">
+
+<!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalTitle" class="modal-title">empty</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body"> 
+
+            <div class="container-fluid">
+            <div class="row">
+              <div class="col-3"><img id="imgSource" src="images/penumbra.jpg" alt="error load" width="100" height="150">
+              </div>
+              <div class="col-9" id="description">
+                  <p>empty</p>
+                </div>
+              </div>
+            </div>       
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>  <!-- End of modal -->    
+
+
+
 <script type="text/javascript" src="src/buildList.js"></script>
 
 </body>
