@@ -84,4 +84,25 @@ const arrayOfBooks = [
 	    document.getElementById('list-all').innerHTML = '';
 	    viewList();
 	};
+function loadDoc() {
+  var search = document.getElementById("books").value;
+  var xhttp = new XMLHttpRequest();
+  var id = [];
+  var title = [];
+  var author = [];
+  document.getElementById("result").innerHTML = '';
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var responseJSON = JSON.parse(this.responseText);
+      for (var i = 0; i < responseJSON.items.length; i++) {
+       id[i] = responseJSON.items[i].id;
+       title[i] = responseJSON.items[i].volumeInfo.title;
+       document.getElementById("result").innerHTML += "<br>" + id[i] + ':' + title[i];
+      }
+      
+    } 
+  };
+  xhttp.open("GET", "https://www.googleapis.com/books/v1/volumes?q=" + search, true);
+  xhttp.send();
+}
 	viewList();
