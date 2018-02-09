@@ -9,17 +9,19 @@
 </head>
 <body>
 <h1>List of books</h1>
+<input type="search" name="searchString" id="books">
+<button type="button" onclick="loadDoc()">Search</button>
 <div class="container-fluid">
   <div class="row bg-dark text-white">
-    <div class="col-lg-1"><button type="button" class="btn btn-secondary" onclick="sortByID()">#ID</button></div>
-      <div class="col-lg-3">Name</div>
+    <div class="col-lg-1"><button type="button" class="btn btn-secondary" onclick="sortByID()">Date</button></div>
+      <div class="col-lg-3">Title</div>
       <div class="col-lg-2">Author</div>
-      <div class="col-lg-1"><button type="button" class="btn btn-secondary" onclick="sortByPrice()">Price </button> </div>
+      <div class="col-lg-1"><button type="button" class="btn btn-secondary" onclick="sortByPrice()">Pages</button> </div>
       <div class="col-lg-2">Details</div>
     </div>
   <div id="list-all"></div>
 </div>
-<button onclick="sortByPriceRev()">Sort by price (reverse)</button>
+<!-- <button onclick="sortByPriceRev()">Sort by price (reverse)</button> -->
 <!-- Modal -->
     <div class="modal fade" id="modal-details" role="dialog">
       <div class="modal-dialog">
@@ -48,11 +50,9 @@
       </div>
     </div>  <!-- End of modal -->   
 
-<p>The XMLHttpRequest Object</p>
-<input type="search" name="searchString" id="books">
-<button type="button" onclick="loadDoc()">Search</button>
+
 <div id="result">
-  Results
+  
 </div> 
 <script type="text/javascript" src="src/buildList.js"></script>
 </body>

@@ -1,5 +1,6 @@
 'use strict';
-const arrayOfBooks = [
+
+const arrayOfBooks_ = [
 {
 	id: 10001,
 	name: 'Mr. Penumbras 24-Hour Bookstore',
@@ -41,24 +42,7 @@ const arrayOfBooks = [
 	modalBody: `<p>Hardcover, 552 pages. Published March 14th 2006 by Alfred </p>`
 },
 ];
-	function viewList(){
-		for (let i = 0; i < arrayOfBooks.length; i++) {
-			let classRow = (i % 2 == 0) ? "row bg-light text-dark" : "row bg-secondary text-white";
-			let name = arrayOfBooks[i].name;
-			let div = document.createElement('div');
-			div.innerHTML = `<div class="${classRow}">
-			<div class="col-lg-1">${arrayOfBooks[i].id}</div>
-			<div class="col-lg-3">${arrayOfBooks[i].name}</div>
-			<div class="col-lg-2">${arrayOfBooks[i].author}</div>
-			<div class="col-lg-1">${arrayOfBooks[i].price}</div>
-			<div class="col-lg-2">
-			<button type="button" class="btn btn-outline-light text-dark" 
-			data-toggle="modal" data-target="#modal-details" onclick= "setModalWindowParameters('${arrayOfBooks[i].name}', 
-			'${arrayOfBooks[i].imgSrc}', '${arrayOfBooks[i].modalBody}')">View details</button></div>
-			</div>`;
-			document.getElementById('list-all').appendChild(div);
-		};
-	};
+	
 	function setModalWindowParameters(name, imgSrc, modalBody){
 		document.getElementById('modal-title').innerHTML = name;
 		document.getElementById('book-img').src = imgSrc;
@@ -84,25 +68,59 @@ const arrayOfBooks = [
 	    document.getElementById('list-all').innerHTML = '';
 	    viewList();
 	};
+
+  var book = {publishedDate: '',  	title: '',  	author: '',  	pageCount: ''};
+  var arrayOfBooks = [];
+  for (var i = 0; i < 10; i++) {
+  	arrayOfBooks[i] = book;
+  }
+
 function loadDoc() {
   var search = document.getElementById("books").value;
   var xhttp = new XMLHttpRequest();
-  var id = [];
-  var title = [];
-  var author = [];
+
+ 
+
   document.getElementById("result").innerHTML = '';
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var responseJSON = JSON.parse(this.responseText);
-      for (var i = 0; i < responseJSON.items.length; i++) {
-       id[i] = responseJSON.items[i].id;
-       title[i] = responseJSON.items[i].volumeInfo.title;
-       document.getElementById("result").innerHTML += "<br>" + id[i] + ':' + title[i];
-      }
-      
+      for (var i = 0; i < responseJSON.items.length; i++) 
+      {
+       arrayOfBooks[i].publishedDate = responseJSON.items[i].volumeInfo.publishedDate;
+       arrayOfBooks[i].title = responseJSON.items[i].volumeInfo.title;
+       arrayOfBooks[i].author = responseJSON.items[i].volumeInfo.authors;
+       arrayOfBooks[i].pageCount = responseJSON.items[i].volumeInfo.pageCount;
+       }
+
+      viewList(arrayOfBooks);
     } 
   };
   xhttp.open("GET", "https://www.googleapis.com/books/v1/volumes?q=" + search, true);
   xhttp.send();
 }
-	viewList();
+
+	function viewList(arrayOfBooks){
+
+		for (let i = 0; i < arrayOfBooks.length; i++) {
+			let classRow = (i % 2 == 0) ? "row bg-light text-dark" : "row bg-secondary text-white";
+			//let name = arrayOfBooks[i].name;
+			let div = document.createElement('div');
+			div.innerHTML = `<div class="${classRow}">
+			<div class="col-lg-1">${arrayOfBooks[i].publishedDate}</div>
+			<div class="col-lg-3">${arrayOfBooks[i].title}</div>
+			<div class="col-lg-2">${arrayOfBooks[i].author}</div>
+			<div class="col-lg-1">${arrayOfBooks[i].pageCount}</div>
+			
+			</div>`;
+			document.getElementById('list-all').appendChild(div);
+		};
+	};
+
+
+	//viewList();
+
+	// <div class="col-lg-2">
+	// 		<button type="button" class="btn btn-outline-light text-dark" 
+	// 		data-toggle="modal" data-target="#modal-details" onclick= "setModalWindowParameters('${arrayOfBooks[i].name}', 
+	// 		'${arrayOfBooks[i].imgSrc}', '${arrayOfBooks[i].modalBody}')">View details</button></div>
