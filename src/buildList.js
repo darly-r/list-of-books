@@ -29,24 +29,30 @@ function loadDoc() {
   	let search = document.getElementById("books").value;
   	let xhttp = new XMLHttpRequest();
   	document.getElementById("result").innerHTML = '';
-  	xhttp.onreadystatechange = function() {
-    	if (this.readyState == 4 && this.status == 200)	{
-      		let responseJSON = JSON.parse(this.responseText);
-      		for (let i = 0; i < responseJSON.items.length; i++) {
-        		arrayOfBooks[i] = 
-        		{
-        		publishedDate : responseJSON.items[i].volumeInfo.publishedDate,
-       			title : responseJSON.items[i].volumeInfo.title,
-       			author : responseJSON.items[i].volumeInfo.authors,
-       			pageCount : responseJSON.items[i].volumeInfo.pageCount 
-       		};
-      	};    
-		viewList(arrayOfBooks);
-    	};
-    	
-  	};
-  	xhttp.open("GET", "https://www.googleapis.com/books/v1/volumes?q=" + search, true);
-  	xhttp.send();    
+  	if (search == '') {
+  		document.getElementById('list-all').innerHTML = '';
+  		alert('Insert some text'); 
+  		return false;
+  	}
+  		else {
+  		xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200)	{
+      			let responseJSON = JSON.parse(this.responseText);
+      			for (let i = 0; i < responseJSON.items.length; i++) {
+        			arrayOfBooks[i] = 
+        			{
+        			publishedDate : responseJSON.items[i].volumeInfo.publishedDate,
+       				title : responseJSON.items[i].volumeInfo.title,
+       				author : responseJSON.items[i].volumeInfo.authors,
+       				pageCount : responseJSON.items[i].volumeInfo.pageCount 
+       				};
+      			};  	  
+			viewList(arrayOfBooks);
+    		};    	
+  		};
+  		xhttp.open("GET", "https://www.googleapis.com/books/v1/volumes?q=" + search, true);
+  		xhttp.send(); 
+  		}  
 }
 
 function viewList(arrayOfBooks){
