@@ -26,13 +26,13 @@ let book = {publishedDate, title, author, pageCount};
 let arrayOfBooks = [];
 
 function loadDoc() {
-  	var search = document.getElementById("books").value;
-  	var xhttp = new XMLHttpRequest();
+  	let search = document.getElementById("books").value;
+  	let xhttp = new XMLHttpRequest();
   	document.getElementById("result").innerHTML = '';
   	xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200)	{
-      		var responseJSON = JSON.parse(this.responseText);
-      		for (var i = 0; i < responseJSON.items.length; i++) {
+      		let responseJSON = JSON.parse(this.responseText);
+      		for (let i = 0; i < responseJSON.items.length; i++) {
         		arrayOfBooks[i] = 
         		{
         		publishedDate : responseJSON.items[i].volumeInfo.publishedDate,
