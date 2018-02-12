@@ -58,9 +58,8 @@ function loadDocCallBack(cFunction) {
         cFunction(this);
       }
       else {
-        alert('Try new search or check URL');
-        console.log('status : ', this.status);
-        document.getElementById("list-all").innerHTML = '';
+        clearList();
+        alert('Try new search or check URL. Error code = ' + this.status);        
       };
     };           
   };
