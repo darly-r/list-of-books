@@ -43,10 +43,10 @@ function viewList(arrayOfBooks){
 	};
 };
 
-function loadDocCallBack(cFunction) {
+function loadDocCallBack(callbackFunction) {
   let search = document.getElementById('searchBooks').value;
   let xhttp = new XMLHttpRequest();
-  if (search == '') {
+  if (search === '') {
     clearList();      
     alert('Insert some text'); 
     return false;
@@ -55,11 +55,11 @@ function loadDocCallBack(cFunction) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4) {
       if (this.status == 200) {            
-        cFunction(this);
+        callbackFunction(this);
       }
       else {
         clearList();
-        alert('Try new search or check URL. Error code = ' + this.status);        
+        alert(`Try new search or check URL. Error code = ${this.status}`);        
       };
     };           
   };
