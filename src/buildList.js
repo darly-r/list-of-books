@@ -76,17 +76,27 @@ function loadDocCallBack(callbackFunction) {
 function getResponse(xhttp){  
   clearList();
   let responseJSON = JSON.parse(xhttp.responseText);
-  for (let i = 0; i < responseJSON.items.length; i++) {
-    arrayOfBooks[i] = 
-    {
-    publishedDate : responseJSON.items[i].volumeInfo.publishedDate,
-    title : responseJSON.items[i].volumeInfo.title,
-    author : responseJSON.items[i].volumeInfo.authors,
-    pageCount : responseJSON.items[i].volumeInfo.pageCount,
-    publisher: responseJSON.items[i].volumeInfo.publisher,
-    description : responseJSON.items[i].volumeInfo.description,
-    imgSrc : responseJSON.items[i].volumeInfo.imageLinks.smallThumbnail
-    };
-  }; 
+
+    arrayOfBooks.publishedDate = responseJSON.items.map((x) =>x.volumeInfo.publishedDate);
+    arrayOfBooks.title = responseJSON.items.map((x) =>x.volumeInfo.title);
+    arrayOfBooks.author = responseJSON.items.map((x) =>x.volumeInfo.authors)
+    arrayOfBooks.pageCount = responseJSON.items.map((x) =>x.volumeInfo.pageCount);
+    arrayOfBooks.publisher = responseJSON.items.map((x) =>x.volumeInfo.publisher);
+    arrayOfBooks.description = responseJSON.items.map((x) =>x.volumeInfo.description);
+    arrayOfBooks.imgSrc = responseJSON.items.map((x) =>x.volumeInfo.imageLinks.smallThumbnail);
+    console.log(arrayOfBooks);
+
+  // for (let i = 0; i < responseJSON.items.length; i++) {
+  //   arrayOfBooks[i] = 
+  //   {
+  //   publishedDate : responseJSON.items[i].volumeInfo.publishedDate,
+  //   title : responseJSON.items[i].volumeInfo.title,
+  //   author : responseJSON.items[i].volumeInfo.authors,
+  //   pageCount : responseJSON.items[i].volumeInfo.pageCount,
+  //   publisher: responseJSON.items[i].volumeInfo.publisher,
+  //   description : responseJSON.items[i].volumeInfo.description,
+  //   imgSrc : responseJSON.items[i].volumeInfo.imageLinks.smallThumbnail
+  //   };
+  // }; 
   viewList(arrayOfBooks); 
 };
