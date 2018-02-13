@@ -21,28 +21,23 @@
     </div>
   <div id="list-all"></div>
 </div>
-<!-- <button onclick="sortByPriceRev()">Sort by price (reverse)</button> -->
 <!-- Modal -->
     <div class="modal fade" id="modal-details" role="dialog">
       <div class="modal-dialog">
 <!-- Modal content -->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 id="modal-title" class="modal-title">empty</h4>
+            <h4 id="modal-title" class="modal-title">Not found</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body"> 
-
             <div class="container-fluid">
             <div class="row">
-              <div class="col-3" id="book-publisher">
-              </div>
-              <div class="col-9" id="description">
-                  <p>empty</p>
-                </div>
-              </div>
+              <div class="col-3"><img id="book-img" alt="error load" width="100" height="150"></div>
+              <div class="col-9" id="description"> <p>Not found</p></div>              
+            </div>
             </div>       
-            <div class="modal-footer">
+            <div class="modal-footer"><div class="col-9" id="book-publisher"></div>
               <button type="button" class="btn btn-default" data-dismiss="modal">Buy now</button>
             </div>
           </div>

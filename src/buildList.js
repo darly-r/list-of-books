@@ -1,9 +1,10 @@
 'use strict';
   	
-function setModalWindowParameters(name, publisher, modalBody){
+function setModalWindowParameters(name, publisher, modalBody, imgSrc){
 	document.getElementById('modal-title').innerHTML = name;
 	document.getElementById('book-publisher').innerHTML = publisher;
 	document.getElementById('description').innerHTML = modalBody;
+  document.getElementById('book-img').src = imgSrc;
 };
 function sortByPrice() {
     document.getElementById('list-all').innerHTML = '';
@@ -41,7 +42,7 @@ function viewList(arrayOfBooks){
                      <div class="col-lg-2">
                      <button type="button" class="btn btn-outline-light text-dark" 
                      data-toggle="modal" data-target="#modal-details" onclick= "setModalWindowParameters('${arrayOfBooks[i].title}', 
-                     '${arrayOfBooks[i].publisher}', '${arrayOfBooks[i].description}')">View details</button></div>                     
+                     '${arrayOfBooks[i].publisher}', '${arrayOfBooks[i].description}', '${arrayOfBooks[i].imgSrc}')">View details</button></div>                     
                 		 </div>`;
 		document.getElementById('list-all').appendChild(div);
 	};
@@ -83,8 +84,9 @@ function getResponse(xhttp){
     author : responseJSON.items[i].volumeInfo.authors,
     pageCount : responseJSON.items[i].volumeInfo.pageCount,
     publisher: responseJSON.items[i].volumeInfo.publisher,
-    description : responseJSON.items[i].volumeInfo.description   
+    description : responseJSON.items[i].volumeInfo.description,
+    imgSrc : responseJSON.items[i].volumeInfo.imageLinks.smallThumbnail
     };
   }; 
-  viewList(arrayOfBooks);  
+  viewList(arrayOfBooks); 
 };
