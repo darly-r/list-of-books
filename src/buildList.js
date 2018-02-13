@@ -1,8 +1,8 @@
 'use strict';
   	
-function setModalWindowParameters(name, imgSrc, modalBody){
+function setModalWindowParameters(name, publisher, modalBody){
 	document.getElementById('modal-title').innerHTML = name;
-	document.getElementById('book-img').src = imgSrc;
+	document.getElementById('book-publisher').innerHTML = publisher;
 	document.getElementById('description').innerHTML = modalBody;
 };
 function sortByPrice() {
@@ -21,8 +21,8 @@ function sortByID() {
     viewList(arrayOfBooks);
 };
 
-let publishedDate = '', title = '', author = '', pageCount = '';
-let book = {publishedDate, title, author, pageCount};
+let publishedDate = '', title = '', author = '', pageCount = '', publisher = '', description = '';
+let book = {publishedDate, title, author, pageCount, publisher, description};
 let arrayOfBooks = [];
 function clearList(){
   document.getElementById("list-all").innerHTML = '';
@@ -38,6 +38,10 @@ function viewList(arrayOfBooks){
 			               <div class="col-lg-3">${arrayOfBooks[i].title}</div>
 			               <div class="col-lg-2">${arrayOfBooks[i].author}</div>
                 		 <div class="col-lg-1">${arrayOfBooks[i].pageCount}</div>
+                     <div class="col-lg-2">
+                     <button type="button" class="btn btn-outline-light text-dark" 
+                     data-toggle="modal" data-target="#modal-details" onclick= "setModalWindowParameters('${arrayOfBooks[i].title}', 
+                     '${arrayOfBooks[i].publisher}', '${arrayOfBooks[i].description}')">View details</button></div>                     
                 		 </div>`;
 		document.getElementById('list-all').appendChild(div);
 	};
@@ -77,7 +81,9 @@ function getResponse(xhttp){
     publishedDate : responseJSON.items[i].volumeInfo.publishedDate,
     title : responseJSON.items[i].volumeInfo.title,
     author : responseJSON.items[i].volumeInfo.authors,
-    pageCount : responseJSON.items[i].volumeInfo.pageCount 
+    pageCount : responseJSON.items[i].volumeInfo.pageCount,
+    publisher: responseJSON.items[i].volumeInfo.publisher,
+    description : responseJSON.items[i].volumeInfo.description   
     };
   }; 
   viewList(arrayOfBooks);  
