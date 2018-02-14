@@ -88,7 +88,8 @@ function getResponse(xhttp){
     }
   });
 
-    console.log(arrayOfBooks);
+    // console.log(arrayOfBooks);
 
   viewList(arrayOfBooks); 
 };
+document.getElementById("setRequestButton").addEventListener("click", () => loadDocCallBack(getResponse));
