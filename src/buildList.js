@@ -92,4 +92,9 @@ function getResponse(xhttp){
 
   viewList(arrayOfBooks); 
 };
-document.getElementById("setRequestButton").addEventListener("click", () => loadDocCallBack(getResponse));
+
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    document.getElementById("setRequestButton").addEventListener("click", () => loadDocCallBack(getResponse));
+  }
+};
