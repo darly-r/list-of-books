@@ -12,9 +12,9 @@ function sortByPrice() {
     viewList(arrayOfBooks);
 };
 function sortByPriceRev() {
-    arrayOfBooks.reverse((a, b) => a.price - b.price);
-    document.getElementById('list-all').innerHTML = '';
-    viewList(arrayOfBooks);
+	arrayOfBooks.reverse((a, b) => a.price - b.price);
+	document.getElementById('list-all').innerHTML = '';
+	viewList(arrayOfBooks);
 };
 function sortByID() {
     arrayOfBooks.sort((a, b) => a.id - b.id);
@@ -48,7 +48,9 @@ function viewList(arrayOfBooks){
 	};
 };
 
+
 function loadDocCallBack(callbackFunction) {
+  return new Promise(function(resolve, reject) {
   let search = document.getElementById('searchBooks').value;
   let xhttp = new XMLHttpRequest();
   if (search === '') {
@@ -60,18 +62,25 @@ function loadDocCallBack(callbackFunction) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4) {
       if (this.status == 200) {            
-        callbackFunction(this);
+        resolve(callbackFunction(this));
       }
       else {
+
+        let error = new Error(this.status);
+        error.code = this.status;
         clearList();
-        alert(`Try new search or check URL. Error code = ${this.status}`);        
+        alert(`Try new search or check URL. Error code = ${error.code}`);
+        reject(error);
+      };                
       };
+    
     };           
   };
   xhttp.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + search, true);
   xhttp.send(); 
-  }; 
+  }); 
 };
+
 
 function getResponse(xhttp){  
   clearList();
