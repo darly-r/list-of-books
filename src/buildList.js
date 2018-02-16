@@ -49,7 +49,7 @@ function viewList(arrayOfBooks){
 };
 
 
-function loadDocCallBack(callbackFunction) {
+function loadDocCallBack(callbackFunction, rejectCallback) {
   return new Promise(function(resolve, reject) {
   let search = document.getElementById('searchBooks').value;
   let xhttp = new XMLHttpRequest();
@@ -59,28 +59,32 @@ function loadDocCallBack(callbackFunction) {
     return false;
   }
   else {
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4) {
-      if (this.status == 200) {            
-        resolve(callbackFunction(this));
-      }
-      else {
+  	xhttp.onreadystatechange = function() {
+  		if (this.readyState == 4) {
+  			if (this.status == 200) {            
+  				resolve(callbackFunction(this));
+  			}
+  			else {
 
-        let error = new Error(this.status);
-        error.code = this.status;
-        clearList();
-        alert(`Try new search or check URL. Error code = ${error.code}`);
-        reject(error);
-      };                
-      };
-    
-    };           
+  				let error = new Error(this.status);
+  				error.code = this.status;
+  				// reject(error);
+  				reject(rejectCallback(error));
+  				// console.log(error.code);
+  			};                
+  		};
+  	};           
   };
+
   xhttp.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=' + search, true);
   xhttp.send(); 
   }); 
 };
 
+function rejectResponse(xhttp){
+	clearList();
+	alert(`Try new search or check URL. Error code = ${xhttp.code}`);
+}
 
 function getResponse(xhttp){  
   clearList();
@@ -104,6 +108,6 @@ function getResponse(xhttp){
 
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
-    document.getElementById("setRequestButton").addEventListener("click", () => loadDocCallBack(getResponse));
+    document.getElementById("setRequestButton").addEventListener("click", () => loadDocCallBack(getResponse, rejectResponse));
   }
 };
