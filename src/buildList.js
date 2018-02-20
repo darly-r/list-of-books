@@ -49,6 +49,7 @@ function viewList(arrayOfBooks){
 };
 
 
+/* old version
 function loadDocCallBack(callbackFunction, rejectCallback) {
   return new Promise(function(resolve, reject) {
   let search = document.getElementById('searchBooks').value;
@@ -85,10 +86,11 @@ function rejectResponse(xhttp){
 	clearList();
 	alert(`Try new search or check URL. Error code = ${xhttp.code}`);
 }
+*/
 
 function getResponse(xhttp){  
   clearList();
-  let responseJSON = JSON.parse(xhttp.responseText);
+  let responseJSON = JSON.parse(xhttp); //.responseText
 
   arrayOfBooks = responseJSON.items.map((item) => {return {
     publishedDate : item.volumeInfo.publishedDate,
@@ -100,14 +102,56 @@ function getResponse(xhttp){
     imgSrc : item.volumeInfo.imageLinks.smallThumbnail
     }
   });
-
-    // console.log(arrayOfBooks);
-
   viewList(arrayOfBooks); 
 };
 
+
+//New version 
+
+function searchBook() {
+	let search = document.getElementById('searchBooks').value;
+	if (search === '') {
+		clearList();      
+		alert('Insert some text'); 
+		return false;
+	}
+	else {
+		httpGet('https://www.googleapis.com/books/v1/volumes?q=' + search)
+		.then(
+			response => getResponse(response),
+			error => alert(`Rejected. Code: ${error.code}`)
+			);
+	};
+};
+
+
+function httpGet(url) {
+
+  return new Promise(function(resolve, reject) {
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+
+    xhr.onload = function() {
+      if (this.status == 200) {
+        resolve(this.response);
+      } else {
+        let error = new Error(this.statusText);
+        error.code = this.status;
+        reject(error);
+      }
+    };
+    xhr.onerror = function() {
+      reject(new Error("Network Error"));
+    };
+    xhr.send();
+  });
+
+};
+
+
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
-    document.getElementById("setRequestButton").addEventListener("click", () => loadDocCallBack(getResponse, rejectResponse));
-  }
+    document.getElementById("setRequestButton").addEventListener("click", () => searchBook());
+  } //loadDocCallBack(getResponse, rejectResponse)
 };
